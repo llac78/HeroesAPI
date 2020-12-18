@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "jdbc.driver",
+    "type": "java.lang.String",
+    "description": "A description for 'jdbc.driver'"
+  },
+  {
+    "name": "hibernate.hbm2ddl.auto",
+    "type": "java.lang.String",
+    "description": "A description for 'hibernate.hbm2ddl.auto'"
+  }
+]}
