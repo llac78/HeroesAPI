@@ -36,11 +36,15 @@ public class HeroService {
 		Hero newHero = this.heroRepository.findById(id).get();
 		newHero.setName(hero.getName());
 		newHero.setCompany(hero.getCompany());
+		
 		return this.heroRepository.save(newHero);
 	}
 	
 	public void delete(Long id) {
 		heroRepository.deleteById(id);
 	}
+	
+	
+	
 
 }

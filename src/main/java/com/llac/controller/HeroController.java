@@ -28,13 +28,13 @@ public class HeroController {
 
 	@Autowired
 	private HeroService heroService;
-
+	
 	@PostMapping("/save")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Hero insert(@RequestBody Hero hero) {
 		return this.heroService.insert(hero);
 	}
-
+	
 	@GetMapping("/list/{company_id}")
 	public ResponseEntity<Page<Hero>> getHeroesByCompany(
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) 

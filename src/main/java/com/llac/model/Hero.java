@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -31,4 +32,19 @@ public class Hero implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
+	
+	@OneToOne
+    @JoinColumn(name = "file_id")
+	private FileDB file;
+	
+	public Hero() {
+	}
+
+	public Hero(String name, Company company, FileDB file) {
+		this.name = name;
+		this.company = company;
+		this.file = file;
+		this.file.setHero(this);
+	}
+
 }
