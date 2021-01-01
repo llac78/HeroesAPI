@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -63,9 +64,9 @@ public class FileController {
     return ResponseEntity.status(HttpStatus.OK).body(files);
   }
 
-  @GetMapping("/files/{id}")
+  @GetMapping(value = "/list/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
   public ResponseEntity<byte[]> getFile(@PathVariable Long id) {
-    FileDB fileDB = storageService.getFile(id);
+    FileDB fileDB = storageService.getFile(id).get();
 
     return ResponseEntity.ok()
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")

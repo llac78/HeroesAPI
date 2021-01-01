@@ -1,6 +1,7 @@
 package com.llac.service;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class FileStorageService {
     return fileDBRepository.save(FileDB);
   }
 
-  public FileDB getFile(Long id) {
-    return fileDBRepository.findById(String.valueOf(id)).get();
+  public Optional<FileDB> getFile(Long id) {
+    return fileDBRepository.findById(id);
   }
   
   public Stream<FileDB> getAllFiles() {
